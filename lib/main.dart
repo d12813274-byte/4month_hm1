@@ -107,15 +107,25 @@ class _AdCardScreenState extends State<AdCardScreen> {
                         ),
                         child: Row(
                           children: [
-                            CircleAvatar(
-                              radius: 25,
-                              child: Icon(Icons.person),
+                            ClipOval(
+                              child: Image.asset(
+                                'assets/images/avatar.png',
+                                width: 50,
+                                height: 50,
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return CircleAvatar(
+                                    radius: 25,
+                                    child: Icon(Icons.person),
+                                  );
+                                },
+                              ),
                             ),
                             Container(width: 12),
-                            Expanded(
-                              child: Column(
+                  Expanded(
+            child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
+                         children: [
                                   Text('Иванов Иван', style: TextStyle(fontSize: 16)),
                                   Row(
                                     children: [
@@ -142,9 +152,20 @@ class _AdCardScreenState extends State<AdCardScreen> {
                       ),
                       Container(height: 15),
                       Center(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text('Пожаловаться ⚠', style: TextStyle(color: Colors.red, fontSize: 12)),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[850],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('Пожаловаться', style: TextStyle(color: Colors.red, fontSize: 12)),
+                              Container(width: 6),
+                              Icon(Icons.warning_amber, color: Colors.red, size: 16),
+                            ],
+                          ),
                         ),
                       ),
                     ],
